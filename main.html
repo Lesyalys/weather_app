@@ -25,7 +25,6 @@
         margin: 0 auto;
       }
 
-      /* ===== HEADER ===== */
       .header {
         display: flex;
         align-items: center;
@@ -63,7 +62,6 @@
         background: #555;
         color: #fff;
       }
-
       .city-tab:hover:not(.active) {
         background: #ddd;
       }
@@ -92,7 +90,6 @@
         margin: 10px 0 25px;
       }
 
-      /* ===== MAIN GRID ===== */
       .main-grid {
         display: grid;
         grid-template-columns: 1fr 300px;
@@ -100,7 +97,6 @@
         margin-bottom: 20px;
       }
 
-      /* ===== CURRENT WEATHER CARD ===== */
       .current-weather {
         background: #b8d4f0;
         border-radius: 16px;
@@ -114,7 +110,6 @@
         font-weight: 700;
         margin-bottom: 5px;
       }
-
       .current-weather .date {
         font-size: 14px;
         color: #555;
@@ -137,12 +132,10 @@
       .temp-feels {
         padding-top: 10px;
       }
-
       .temp-feels .label {
         font-size: 13px;
         color: #555;
       }
-
       .temp-feels .value {
         font-size: 22px;
         font-weight: 600;
@@ -180,13 +173,11 @@
         color: #555;
         margin-bottom: 5px;
       }
-
       .temp-stat .value {
         font-size: 22px;
         font-weight: 700;
       }
 
-      /* ===== SIDEBAR ===== */
       .sidebar {
         display: flex;
         flex-direction: column;
@@ -226,13 +217,11 @@
         color: #777;
         margin-bottom: 4px;
       }
-
       .param-item .value {
         font-size: 20px;
         font-weight: 700;
       }
 
-      /* ===== WIND CARD ===== */
       .wind-card {
         background: #e0f0e8;
       }
@@ -246,9 +235,7 @@
       .compass {
         width: 70px;
         height: 70px;
-        position: relative;
       }
-
       .compass svg {
         width: 100%;
         height: 100%;
@@ -258,20 +245,17 @@
         font-size: 28px;
         font-weight: 700;
       }
-
       .wind-info .speed span {
         font-size: 14px;
         font-weight: 400;
         color: #555;
       }
-
       .wind-info .gusts {
         font-size: 13px;
         color: #777;
         margin-top: 5px;
       }
 
-      /* ===== DAYLIGHT ===== */
       .daylight-card {
         background: #fff;
         border-radius: 16px;
@@ -310,7 +294,7 @@
         height: 100%;
         background: #f0a030;
         border-radius: 4px;
-        width: 75%;
+        transition: width 0.5s ease;
       }
 
       .daylight-bar-thumb {
@@ -336,17 +320,14 @@
         font-size: 13px;
         color: #777;
       }
-
       .daylight-summary .item .value {
         font-size: 24px;
         font-weight: 700;
       }
-
       .daylight-summary .item.center {
         text-align: center;
       }
 
-      /* ===== 5-DAY FORECAST ===== */
       .forecast-section h3 {
         font-size: 12px;
         font-weight: 600;
@@ -374,13 +355,11 @@
         background: #b8d4f0;
         border-color: #b8d4f0;
       }
-
       .forecast-card .day {
         font-size: 14px;
         font-weight: 600;
         margin-bottom: 10px;
       }
-
       .forecast-card .icon {
         height: 50px;
         margin-bottom: 10px;
@@ -388,13 +367,11 @@
         align-items: center;
         justify-content: center;
       }
-
       .forecast-card .temp {
         font-size: 22px;
         font-weight: 700;
         margin-bottom: 3px;
       }
-
       .forecast-card .temp .low {
         font-size: 14px;
         font-weight: 400;
@@ -413,17 +390,14 @@
       .forecast-card.active .details {
         border-top-color: rgba(255, 255, 255, 0.5);
       }
-
       .forecast-card .details .label {
         color: #777;
       }
-
       .forecast-card .details .value {
         font-weight: 600;
         font-size: 13px;
       }
 
-      /* ===== HOURLY FORECAST ===== */
       .hourly-card {
         background: #fff;
         border-radius: 16px;
@@ -456,7 +430,6 @@
         height: 120px;
         margin-bottom: 10px;
       }
-
       .hourly-chart svg {
         width: 100%;
         height: 100%;
@@ -474,11 +447,9 @@
         overflow-x: auto;
         padding-bottom: 10px;
       }
-
       .hourly-scroll::-webkit-scrollbar {
         height: 4px;
       }
-
       .hourly-scroll::-webkit-scrollbar-thumb {
         background: #999;
         border-radius: 2px;
@@ -488,7 +459,6 @@
         min-width: 900px;
       }
 
-      /* ===== RESPONSIVE ===== */
       @media (max-width: 900px) {
         .main-grid {
           grid-template-columns: 1fr;
@@ -513,7 +483,6 @@
   </head>
   <body>
     <div class="container">
-      <!-- HEADER -->
       <header class="header">
         <div class="logo">ПОГОДНЫЙ ФРОНТ</div>
         <div class="city-tabs">
@@ -563,12 +532,10 @@
 
       <div class="divider"></div>
 
-      <!-- MAIN GRID -->
       <div class="main-grid">
-        <!-- CURRENT WEATHER -->
         <div class="current-weather">
           <h2>Нью-Йорк</h2>
-          <div class="date">понедельник, 27 апреля в 14:42</div>
+          <div class="date" id="currentDate">—</div>
 
           <svg class="sun-icon-large" viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="20" fill="#f0a030" />
@@ -610,7 +577,6 @@
           </div>
         </div>
 
-        <!-- SIDEBAR -->
         <div class="sidebar">
           <div class="params-card">
             <h3>ПАРАМЕТРЫ</h3>
@@ -695,209 +661,44 @@
         </div>
       </div>
 
-      <!-- DAYLIGHT -->
       <div class="daylight-card">
         <h3>СВЕТОВОЙ ДЕНЬ</h3>
         <div class="daylight-times">
-          <span>05:48</span>
+          <span id="sunriseTime">05:48</span>
           <span>утро</span>
           <span>полдень</span>
           <span>вечер</span>
-          <span>20:47</span>
+          <span id="sunsetTimeEnd">20:47</span>
         </div>
         <div class="daylight-bar-container">
-          <div class="daylight-bar">
+          <div class="daylight-bar" id="daylightBar" style="width: 0%">
             <div class="daylight-bar-thumb"></div>
           </div>
         </div>
         <div class="daylight-summary">
           <div class="item">
             <div class="label">Восход</div>
-            <div class="value">05:48</div>
+            <div class="value" id="sunriseValue">05:48</div>
           </div>
           <div class="item center">
             <div class="label">Световой день</div>
-            <div class="value">14ч 36м</div>
+            <div class="value" id="dayLength">—</div>
           </div>
           <div class="item">
             <div class="label">Закат</div>
-            <div class="value">20:24</div>
+            <div class="value" id="sunsetValue">20:24</div>
           </div>
         </div>
       </div>
 
-      <!-- 5-DAY FORECAST -->
       <div class="forecast-section">
         <h3>ПРОГНОЗ НА 5 ДНЕЙ</h3>
-        <div class="forecast-grid">
-          <div class="forecast-card active">
-            <div class="day">Сегодня</div>
-            <div class="icon">
-              <svg width="50" height="40" viewBox="0 0 50 40">
-                <path
-                  d="M12 25 Q12 12 25 12 Q32 8 37 16 Q44 16 44 24 Q44 30 38 30 L16 30 Q8 30 8 24 Q8 20 12 25Z"
-                  fill="#fff"
-                  stroke="#b8d4f0"
-                  stroke-width="1"
-                />
-              </svg>
-            </div>
-            <div class="temp">+22°<span class="low">+15°</span></div>
-            <div class="details">
-              <div>
-                <div class="label">Влажность</div>
-                <div class="value">70%</div>
-              </div>
-              <div>
-                <div class="label">Ветер</div>
-                <div class="value">5.2 м/с</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="forecast-card">
-            <div class="day">Вт</div>
-            <div class="icon">
-              <svg width="50" height="40" viewBox="0 0 50 40">
-                <path
-                  d="M12 22 Q12 10 24 10 Q30 6 35 14 Q42 14 42 22 Q42 27 37 27 L16 27 Q9 27 9 22 Q9 18 12 22Z"
-                  fill="#888"
-                />
-                <line
-                  x1="18"
-                  y1="30"
-                  x2="16"
-                  y2="36"
-                  stroke="#5599dd"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <line
-                  x1="26"
-                  y1="30"
-                  x2="24"
-                  y2="37"
-                  stroke="#5599dd"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <line
-                  x1="34"
-                  y1="30"
-                  x2="32"
-                  y2="35"
-                  stroke="#5599dd"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </div>
-            <div class="temp">+22°<span class="low">+15°</span></div>
-            <div class="details">
-              <div>
-                <div class="label">Влажность</div>
-                <div class="value">70%</div>
-              </div>
-              <div>
-                <div class="label">Ветер</div>
-                <div class="value">5.2 м/с</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="forecast-card">
-            <div class="day">Ср</div>
-            <div class="icon">
-              <svg width="50" height="40" viewBox="0 0 50 40">
-                <path
-                  d="M10 20 Q15 15 20 20 Q25 25 30 20 Q35 15 40 20"
-                  fill="none"
-                  stroke="#ccc"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M10 26 Q15 21 20 26 Q25 31 30 26 Q35 21 40 26"
-                  fill="none"
-                  stroke="#ccc"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </div>
-            <div class="temp">+22°<span class="low">+15°</span></div>
-            <div class="details">
-              <div>
-                <div class="label">Влажность</div>
-                <div class="value">70%</div>
-              </div>
-              <div>
-                <div class="label">Ветер</div>
-                <div class="value">5.2 м/с</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="forecast-card">
-            <div class="day">Чт</div>
-            <div class="icon">
-              <svg width="50" height="40" viewBox="0 0 50 40">
-                <path
-                  d="M12 22 Q12 10 24 10 Q30 6 35 14 Q42 14 42 22 Q42 27 37 27 L16 27 Q9 27 9 22 Q9 18 12 22Z"
-                  fill="#b8d4f0"
-                />
-                <polygon points="25,27 22,34 27,34 24,40" fill="#f0a030" />
-              </svg>
-            </div>
-            <div class="temp">+22°<span class="low">+15°</span></div>
-            <div class="details">
-              <div>
-                <div class="label">Влажность</div>
-                <div class="value">70%</div>
-              </div>
-              <div>
-                <div class="label">Ветер</div>
-                <div class="value">5.2 м/с</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="forecast-card">
-            <div class="day">Пт</div>
-            <div class="icon">
-              <svg width="50" height="40" viewBox="0 0 50 40">
-                <circle cx="25" cy="20" r="8" fill="#f0a030" />
-                <g stroke="#f0a030" stroke-width="2" stroke-linecap="round">
-                  <line x1="25" y1="6" x2="25" y2="10" />
-                  <line x1="25" y1="30" x2="25" y2="34" />
-                  <line x1="11" y1="20" x2="15" y2="20" />
-                  <line x1="35" y1="20" x2="39" y2="20" />
-                  <line x1="15" y1="10" x2="18" y2="13" />
-                  <line x1="32" y1="27" x2="35" y2="30" />
-                  <line x1="15" y1="30" x2="18" y2="27" />
-                  <line x1="32" y1="13" x2="35" y2="10" />
-                </g>
-              </svg>
-            </div>
-            <div class="temp">+22°<span class="low">+15°</span></div>
-            <div class="details">
-              <div>
-                <div class="label">Влажность</div>
-                <div class="value">70%</div>
-              </div>
-              <div>
-                <div class="label">Ветер</div>
-                <div class="value">5.2 м/с</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="forecast-grid" id="forecastGrid"></div>
       </div>
 
-      <!-- HOURLY FORECAST -->
       <div class="hourly-card">
         <h3>ПОЧАСОВОЙ ПРОГНОЗ — 24 ЧАСА</h3>
-        <div class="hourly-scroll">
+        <div class="hourly-scroll" id="hourlyScroll">
           <div class="hourly-inner">
             <div class="hourly-icons" id="hourlyIcons"></div>
             <div class="hourly-chart">
@@ -914,82 +715,256 @@
     </div>
 
     <script>
-      // ===== CITY TABS =====
-      document.querySelectorAll(".city-tab").forEach((tab) => {
-        tab.addEventListener("click", () => {
-          document
-            .querySelectorAll(".city-tab")
-            .forEach((t) => t.classList.remove("active"));
-          tab.classList.add("active");
-        });
-      });
-
-      // ===== HOURLY DATA =====
-      const hourlyData = [
-        { time: "00:00", temp: 4, icon: "moon" },
-        { time: "01:00", temp: 4, icon: "cloud-moon" },
-        { time: "02:00", temp: 5, icon: "cloud-moon" },
-        { time: "03:00", temp: 10, icon: "moon" },
-        { time: "04:00", temp: 14, icon: "moon" },
-        { time: "05:00", temp: 9, icon: "moon" },
-        { time: "06:00", temp: 8, icon: "cloud-moon" },
-        { time: "07:00", temp: 4, icon: "cloud-moon" },
-        { time: "08:00", temp: 4, icon: "moon" },
-        { time: "09:00", temp: 4, icon: "moon" },
-        { time: "10:00", temp: 2, icon: "cloud" },
-        { time: "11:00", temp: 2, icon: "sun" },
-        { time: "12:00", temp: 2, icon: "sun" },
-        { time: "13:00", temp: 2, icon: "cloud-sun" },
-        { time: "14:00", temp: 0, icon: "cloud-sun" },
-        { time: "15:00", temp: -1, icon: "cloud" },
-        { time: "16:00", temp: -2, icon: "cloud-sun" },
-        { time: "17:00", temp: -1, icon: "cloud-sun" },
-        { time: "18:00", temp: 2, icon: "cloud-sun" },
+      // ===== УТИЛИТЫ ДАТЫ/ВРЕМЕНИ =====
+      const DAYS_WEEK = [
+        "воскресенье",
+        "понедельник",
+        "вторник",
+        "среда",
+        "четверг",
+        "пятница",
+        "суббота",
+      ];
+      const DAYS_WEEK_SHORT = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
+      const MONTHS = [
+        "января",
+        "февраля",
+        "марта",
+        "апреля",
+        "мая",
+        "июня",
+        "июля",
+        "августа",
+        "сентября",
+        "октября",
+        "ноября",
+        "декабря",
+      ];
+      const MONTHS_SHORT = [
+        "янв",
+        "фев",
+        "мар",
+        "апр",
+        "май",
+        "июн",
+        "июл",
+        "авг",
+        "сен",
+        "окт",
+        "ноя",
+        "дек",
       ];
 
-      const iconSVGs = {
-        moon: '<svg width="24" height="24" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="#2c3e6b"/></svg>',
-        "cloud-moon":
-          '<svg width="24" height="24" viewBox="0 0 24 24"><path d="M18 10a6 6 0 0 1-6 6 6 6 0 0 1-6-6 6 6 0 0 1 6-6 4 4 0 0 0 6 6z" fill="#2c3e6b"/><path d="M8 18 Q8 12 14 12 Q17 10 19 14 Q22 14 22 18 Q22 21 19 21 L10 21 Q7 21 7 18 Q7 16 8 18Z" fill="#b8d4f0"/></svg>',
-        cloud:
-          '<svg width="24" height="24" viewBox="0 0 24 24"><path d="M8 18 Q8 12 14 12 Q17 10 19 14 Q22 14 22 18 Q22 21 19 21 L10 21 Q7 21 7 18 Q7 16 8 18Z" fill="#b8d4f0"/></svg>',
-        sun: '<svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="#f0a030"/><g stroke="#f0a030" stroke-width="2" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="5" y1="5" x2="7" y2="7"/><line x1="17" y1="17" x2="19" y2="19"/><line x1="5" y1="19" x2="7" y2="17"/><line x1="17" y1="7" x2="19" y2="5"/></g></svg>',
-        "cloud-sun":
-          '<svg width="24" height="24" viewBox="0 0 24 24"><circle cx="16" cy="8" r="4" fill="#f0a030"/><path d="M6 18 Q6 12 12 12 Q15 10 17 14 Q20 14 20 18 Q20 21 17 21 L8 21 Q5 21 5 18 Q5 16 6 18Z" fill="#b8d4f0"/></svg>',
-      };
+      function pad(n) {
+        return n.toString().padStart(2, "0");
+      }
 
-      // Render icons
-      const iconsContainer = document.getElementById("hourlyIcons");
-      hourlyData.forEach((d) => {
-        const div = document.createElement("div");
-        div.className = "h-icon";
-        div.innerHTML = iconSVGs[d.icon] || iconSVGs["cloud"];
-        iconsContainer.appendChild(div);
-      });
+      function formatDateTime(date) {
+        const day = DAYS_WEEK[date.getDay()];
+        const d = date.getDate();
+        const month = MONTHS[date.getMonth()];
+        const h = pad(date.getHours());
+        const m = pad(date.getMinutes());
+        return `${day}, ${d} ${month} в ${h}:${m}`;
+      }
 
-      // Render times
-      const timesContainer = document.getElementById("hourlyTimes");
-      hourlyData.forEach((d) => {
-        const div = document.createElement("div");
-        div.textContent = d.time;
-        timesContainer.appendChild(div);
-      });
+      function formatTime(date) {
+        return `${pad(date.getHours())}:${pad(date.getMinutes())}`;
+      }
 
-      // Draw chart
-      function drawChart() {
+      // ===== ОБНОВЛЕНИЕ ТЕКУЩЕГО ВРЕМЕНИ =====
+      function updateCurrentTime() {
+        const now = new Date();
+        document.getElementById("currentDate").textContent =
+          formatDateTime(now);
+      }
+
+      // ===== СВЕТОВОЙ ДЕНЬ (упрощённый расчёт по широте) =====
+      // Для Нью-Йорка (~40.7°N) — приблизительные значения
+      function getSunTimes(date) {
+        const dayOfYear = Math.floor(
+          (date - new Date(date.getFullYear(), 0, 0)) / 86400000,
+        );
+        // Упрощённая формула: восход/закат зависят от дня года
+        const sunriseHour =
+          5 + 48 / 60 + Math.sin(((dayOfYear - 80) / 365) * Math.PI * 2) * 1.2;
+        const sunsetHour =
+          18 + 24 / 60 + Math.sin(((dayOfYear - 80) / 365) * Math.PI * 2) * 2.5;
+        return {
+          sunrise: sunriseHour,
+          sunset: sunsetHour,
+          daylight: sunsetHour - sunriseHour,
+        };
+      }
+
+      function updateDaylight() {
+        const now = new Date();
+        const sun = getSunTimes(now);
+
+        const srH = Math.floor(sun.sunrise);
+        const srM = Math.round((sun.sunrise - srH) * 60);
+        const ssH = Math.floor(sun.sunset);
+        const ssM = Math.round((sun.sunset - ssH) * 60);
+
+        const srStr = `${pad(srH)}:${pad(srM)}`;
+        const ssStr = `${pad(ssH)}:${pad(ssM)}`;
+
+        document.getElementById("sunriseTime").textContent = srStr;
+        document.getElementById("sunsetTimeEnd").textContent = ssStr;
+        document.getElementById("sunriseValue").textContent = srStr;
+        document.getElementById("sunsetValue").textContent = ssStr;
+
+        const dlH = Math.floor(sun.daylight);
+        const dlM = Math.round((sun.daylight - dlH) * 60);
+        document.getElementById("dayLength").textContent = `${dlH}ч ${dlM}м`;
+
+        // Прогресс-бар
+        const currentMinutes = now.getHours() * 60 + now.getMinutes();
+        const srMinutes = sun.sunrise * 60;
+        const ssMinutes = sun.sunset * 60;
+
+        let progress = 0;
+        if (currentMinutes <= srMinutes) {
+          progress = 0;
+        } else if (currentMinutes >= ssMinutes) {
+          progress = 100;
+        } else {
+          progress =
+            ((currentMinutes - srMinutes) / (ssMinutes - srMinutes)) * 100;
+        }
+
+        document.getElementById("daylightBar").style.width = `${progress}%`;
+      }
+
+      // ===== 5-ДНЕВНЫЙ ПРОГНОЗ =====
+      function renderForecast() {
+        const grid = document.getElementById("forecastGrid");
+        grid.innerHTML = "";
+
+        const now = new Date();
+        const icons = ["cloud", "rain", "wind", "storm", "sun"];
+
+        for (let i = 0; i < 5; i++) {
+          const date = new Date(now);
+          date.setDate(now.getDate() + i);
+
+          const dayName = i === 0 ? "Сегодня" : DAYS_WEEK_SHORT[date.getDay()];
+          const icon = icons[i];
+          const high = 22 - Math.floor(Math.random() * 3);
+          const low = 15 - Math.floor(Math.random() * 3);
+
+          const card = document.createElement("div");
+          card.className = `forecast-card${i === 0 ? " active" : ""}`;
+          card.innerHTML = `
+        <div class="day">${dayName}</div>
+        <div class="icon">${getForecastIcon(icon)}</div>
+        <div class="temp">+${high}°<span class="low">+${low}°</span></div>
+        <div class="details">
+          <div><div class="label">Влажность</div><div class="value">${65 + Math.floor(Math.random() * 10)}%</div></div>
+          <div><div class="label">Ветер</div><div class="value">${(4 + Math.random() * 2).toFixed(1)} м/с</div></div>
+        </div>
+      `;
+          grid.appendChild(card);
+        }
+      }
+
+      function getForecastIcon(type) {
+        const icons = {
+          cloud:
+            '<svg width="50" height="40" viewBox="0 0 50 40"><path d="M12 25 Q12 12 25 12 Q32 8 37 16 Q44 16 44 24 Q44 30 38 30 L16 30 Q8 30 8 24 Q8 20 12 25Z" fill="#fff" stroke="#b8d4f0" stroke-width="1"/></svg>',
+          rain: '<svg width="50" height="40" viewBox="0 0 50 40"><path d="M12 22 Q12 10 24 10 Q30 6 35 14 Q42 14 42 22 Q42 27 37 27 L16 27 Q9 27 9 22 Q9 18 12 22Z" fill="#888"/><line x1="18" y1="30" x2="16" y2="36" stroke="#5599dd" stroke-width="2" stroke-linecap="round"/><line x1="26" y1="30" x2="24" y2="37" stroke="#5599dd" stroke-width="2" stroke-linecap="round"/><line x1="34" y1="30" x2="32" y2="35" stroke="#5599dd" stroke-width="2" stroke-linecap="round"/></svg>',
+          wind: '<svg width="50" height="40" viewBox="0 0 50 40"><path d="M10 20 Q15 15 20 20 Q25 25 30 20 Q35 15 40 20" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round"/><path d="M10 26 Q15 21 20 26 Q25 31 30 26 Q35 21 40 26" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round"/></svg>',
+          storm:
+            '<svg width="50" height="40" viewBox="0 0 50 40"><path d="M12 22 Q12 10 24 10 Q30 6 35 14 Q42 14 42 22 Q42 27 37 27 L16 27 Q9 27 9 22 Q9 18 12 22Z" fill="#b8d4f0"/><polygon points="25,27 22,34 27,34 24,40" fill="#f0a030"/></svg>',
+          sun: '<svg width="50" height="40" viewBox="0 0 50 40"><circle cx="25" cy="20" r="8" fill="#f0a030"/><g stroke="#f0a030" stroke-width="2" stroke-linecap="round"><line x1="25" y1="6" x2="25" y2="10"/><line x1="25" y1="30" x2="25" y2="34"/><line x1="11" y1="20" x2="15" y2="20"/><line x1="35" y1="20" x2="39" y2="20"/><line x1="15" y1="10" x2="18" y2="13"/><line x1="32" y1="27" x2="35" y2="30"/><line x1="15" y1="30" x2="18" y2="27"/><line x1="32" y1="13" x2="35" y2="10"/></g></svg>',
+        };
+        return icons[type] || icons.cloud;
+      }
+
+      // ===== ПОЧАСОВОЙ ПРОГНОЗ (24 часа от текущего момента) =====
+      function getHourlyIcon(hour) {
+        // hour: 0-23
+        if (hour >= 22 || hour < 5) return "moon";
+        if (hour >= 5 && hour < 7) return "cloud-moon";
+        if (hour >= 7 && hour < 10) return "cloud";
+        if (hour >= 10 && hour < 17) return "sun";
+        if (hour >= 17 && hour < 20) return "cloud-sun";
+        return "cloud-moon";
+      }
+
+      function getHourlyTemp(hour, baseTemp = 15) {
+        // Синусоида: минимум в 4:00, максимум в 15:00
+        const phase = ((hour - 4) / 24) * Math.PI * 2;
+        const variation = Math.sin(phase) * 8;
+        return Math.round(baseTemp + variation);
+      }
+
+      function renderHourly() {
+        const iconsContainer = document.getElementById("hourlyIcons");
+        const timesContainer = document.getElementById("hourlyTimes");
         const svg = document.getElementById("hourlyChart");
-        const w = 900;
-        const h = 120;
-        const padding = 20;
+
+        iconsContainer.innerHTML = "";
+        timesContainer.innerHTML = "";
+        svg.innerHTML = "";
+
+        const now = new Date();
+        const currentHour = now.getHours();
+        const hourlyData = [];
+
+        for (let i = 0; i < 24; i++) {
+          const hour = (currentHour + i) % 24;
+          const date = new Date(now);
+          date.setHours(hour, 0, 0, 0);
+          if (i > 0 && hour <= currentHour) date.setDate(date.getDate() + 1);
+
+          hourlyData.push({
+            time: `${pad(hour)}:00`,
+            temp: getHourlyTemp(hour),
+            icon: getHourlyIcon(hour),
+            isNow: i === 0,
+          });
+        }
+
+        const iconSVGs = {
+          moon: '<svg width="24" height="24" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="#2c3e6b"/></svg>',
+          "cloud-moon":
+            '<svg width="24" height="24" viewBox="0 0 24 24"><path d="M18 10a6 6 0 0 1-6 6 6 6 0 0 1-6-6 6 6 0 0 1 6-6 4 4 0 0 0 6 6z" fill="#2c3e6b"/><path d="M8 18 Q8 12 14 12 Q17 10 19 14 Q22 14 22 18 Q22 21 19 21 L10 21 Q7 21 7 18 Q7 16 8 18Z" fill="#b8d4f0"/></svg>',
+          cloud:
+            '<svg width="24" height="24" viewBox="0 0 24 24"><path d="M8 18 Q8 12 14 12 Q17 10 19 14 Q22 14 22 18 Q22 21 19 21 L10 21 Q7 21 7 18 Q7 16 8 18Z" fill="#b8d4f0"/></svg>',
+          sun: '<svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="#f0a030"/><g stroke="#f0a030" stroke-width="2" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="5" y1="5" x2="7" y2="7"/><line x1="17" y1="17" x2="19" y2="19"/><line x1="5" y1="19" x2="7" y2="17"/><line x1="17" y1="7" x2="19" y2="5"/></g></svg>',
+          "cloud-sun":
+            '<svg width="24" height="24" viewBox="0 0 24 24"><circle cx="16" cy="8" r="4" fill="#f0a030"/><path d="M6 18 Q6 12 12 12 Q15 10 17 14 Q20 14 20 18 Q20 21 17 21 L8 21 Q5 21 5 18 Q5 16 6 18Z" fill="#b8d4f0"/></svg>',
+        };
+
+        hourlyData.forEach((d) => {
+          const div = document.createElement("div");
+          div.className = "h-icon";
+          div.innerHTML = iconSVGs[d.icon] || iconSVGs["cloud"];
+          if (d.isNow) div.style.opacity = "1";
+          iconsContainer.appendChild(div);
+        });
+
+        hourlyData.forEach((d) => {
+          const div = document.createElement("div");
+          div.textContent = d.time;
+          if (d.isNow) {
+            div.style.fontWeight = "700";
+            div.style.color = "#f0a030";
+          }
+          timesContainer.appendChild(div);
+        });
+
+        // Рисуем график
+        const w = 900,
+          h = 120,
+          padding = 20;
         const temps = hourlyData.map((d) => d.temp);
         const minT = Math.min(...temps) - 2;
         const maxT = Math.max(...temps) + 2;
-
         const xStep = (w - padding * 2) / (hourlyData.length - 1);
 
         let points = "";
-        let labels = "";
-
         hourlyData.forEach((d, i) => {
           const x = padding + i * xStep;
           const y =
@@ -1004,7 +979,8 @@
           label.setAttribute("y", y - 8);
           label.setAttribute("text-anchor", "middle");
           label.setAttribute("font-size", "11");
-          label.setAttribute("fill", "#555");
+          label.setAttribute("fill", d.isNow ? "#f0a030" : "#555");
+          label.setAttribute("font-weight", d.isNow ? "700" : "400");
           label.textContent = (d.temp > 0 ? "+" : "") + d.temp + "°";
           svg.appendChild(label);
 
@@ -1014,8 +990,8 @@
           );
           dot.setAttribute("cx", x);
           dot.setAttribute("cy", y);
-          dot.setAttribute("r", "3");
-          dot.setAttribute("fill", "#5599dd");
+          dot.setAttribute("r", d.isNow ? "5" : "3");
+          dot.setAttribute("fill", d.isNow ? "#f0a030" : "#5599dd");
           svg.appendChild(dot);
         });
 
@@ -1028,9 +1004,41 @@
         polyline.setAttribute("stroke", "#5599dd");
         polyline.setAttribute("stroke-width", "2");
         svg.insertBefore(polyline, svg.firstChild);
+
+        // Прокрутка к текущему часу
+        setTimeout(() => {
+          const scroll = document.getElementById("hourlyScroll");
+          const inner = scroll.querySelector(".hourly-inner");
+          const itemWidth = inner.offsetWidth / 24;
+          scroll.scrollLeft = itemWidth * 2; // Немного отступа
+        }, 100);
       }
 
-      drawChart();
+      // ===== ПЕРЕКЛЮЧЕНИЕ ГОРОДОВ =====
+      document.querySelectorAll(".city-tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document
+            .querySelectorAll(".city-tab")
+            .forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+        });
+      });
+
+      // ===== ИНИЦИАЛИЗАЦИЯ =====
+      function init() {
+        updateCurrentTime();
+        updateDaylight();
+        renderForecast();
+        renderHourly();
+      }
+
+      init();
+
+      // Обновление каждую минуту
+      setInterval(() => {
+        updateCurrentTime();
+        updateDaylight();
+      }, 60000);
     </script>
   </body>
 </html>
